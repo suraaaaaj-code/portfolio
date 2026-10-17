@@ -27,16 +27,30 @@ Before committing, confirm `server/.env` is ignored (`git check-ignore server/.e
 
 The site is static and delivered from Cloudflare's CDN. A custom domain name itself is usually paid; Cloudflare provides the `pages.dev` address at no charge. If you already own a domain, add it under **Workers & Pages → your project → Custom domains**, then follow Cloudflare's DNS instructions. For an apex domain, Cloudflare requires the domain's nameservers to use Cloudflare.
 
-## 3. Deploy the API on Render
+## 3. Deploy the API and configure Gmail SMTP
 
-1. In Render, choose **New → Web Service**, connect the same repository, and select branch `main`.
-2. Set root directory to `server`, build command to `npm install`, and start command to `npm start`.
-3. Create the service and copy its `https://<service>.onrender.com` URL into the frontend's `VITE_API_URL` setting in Cloudflare. Trigger a new Pages deployment after changing a build variable.
-4. In Render's environment settings, add:
-   - `MONGODB_URI`: the Atlas connection string, with the database user's username/password URL-encoded if they contain reserved characters.
-   - `CLIENT_URL`: the exact deployed website origin, e.g. `https://your-site.pages.dev`; add the custom-domain origin too if you use one. Separate multiple origins with commas.
-   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM_EMAIL`, and `CONTACT_TO_EMAIL` using the values from your mail provider. Use an SMTP app password, never your normal account password.
-5. Confirm `https://<service>.onrender.com/api/health` returns `{"ok":true}`.
+1. In the Google Account for `webdev.2301@gmail.com`, turn on 2-Step Verification. Then create a Google App Password for the portfolio mailer. Google only offers App Passwords when 2-Step Verification is enabled. Never use your regular Google password.
+2. In Render, choose **New → Web Service**, connect `suraaaaaj-code/portfolio`, and select branch `main`.
+3. Set root directory to `server`, build command to `npm install`, and start command to `npm start`.
+4. Choose a plan that allows outbound SMTP. Render Free blocks connections on SMTP ports `25`, `465`, and `587`, so Gmail SMTP will not work on its Free web service.
+5. In the service's **Environment** settings, add these values. Paste the Google App Password into `SMTP_PASS` (remove spaces); keep it private and never commit it.
+
+   | Key | Value |
+   | --- | --- |
+   | `MONGODB_URI` | Your MongoDB Atlas connection string; URL-encode reserved characters in the database user's username/password. |
+   | `CLIENT_URL` | `https://suraj-kumar-portfolio.pages.dev` |
+   | `SMTP_HOST` | `smtp.gmail.com` |
+   | `SMTP_PORT` | `587` |
+   | `SMTP_SECURE` | `false` |
+   | `SMTP_USER` | `webdev.2301@gmail.com` |
+   | `SMTP_PASS` | The 16-character Google App Password, with spaces removed. |
+   | `SMTP_FROM_EMAIL` | `webdev.2301@gmail.com` |
+   | `CONTACT_TO_EMAIL` | `webdev.2301@gmail.com` |
+
+6. In MongoDB Atlas, allow the backend host's outbound IP addresses in **Security → Network Access → IP Access List**. Do not rely on the local computer's IP for a hosted service, and do not use `0.0.0.0/0` as a shortcut.
+7. Deploy the service and copy its public `https://<service>.onrender.com` base URL. Confirm `https://<service>.onrender.com/api/health` returns `{"ok":true}`.
+8. In Cloudflare Pages, open the project **Settings → Variables and Secrets**, add `VITE_API_URL` with that base URL (no trailing slash), then redeploy the frontend. This connects the contact form to the API.
+9. Submit a test contact message and confirm it is saved in Atlas and an email arrives at `webdev.2301@gmail.com`.
 
 ### MongoDB Atlas network access
 
@@ -46,7 +60,7 @@ Atlas only accepts connections from addresses in the project's IP access list. I
 
 - Cloudflare Pages keeps the portfolio's static assets on its CDN, so the initial page does not wait for the API.
 - Render's free API service sleeps after 15 minutes without traffic and can take about a minute to wake. The first contact-form submission after idle can therefore be slow or time out. There is no way to promise a consistently warm API on that free plan.
-- Render's free services block outbound SMTP ports 25, 465, and 587. The current SMTP notification code therefore cannot send email from Render Free. To keep deployment free, switch notifications to an email provider's HTTPS API (such as Resend) and store its API key as a server-side secret; otherwise choose a host/plan that permits SMTP. MongoDB persistence can still work when Atlas access is configured.
+- Gmail SMTP requires a Google App Password, and Render Free blocks outbound SMTP ports 25, 465, and 587. Use a backend host/plan that permits SMTP, or choose an HTTPS email API instead of SMTP if keeping the backend free is a requirement.
 - A custom domain registration is not free in general. The free `pages.dev` subdomain works without buying a domain; if you already own a domain, connecting it to Pages does not require a paid Cloudflare Pages plan.
 
 ## 5. Check the deployed site
