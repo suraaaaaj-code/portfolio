@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 88" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">Suraj Kumar</title>
+  <desc id="logo-desc">A burnt orange monogram with an AI spark, followed by Suraj Kumar's name and developer title.</desc>
+  <rect x="4" y="4" width="80" height="80" rx="23" fill="#c8512c"/>
+  <rect x="10" y="10" width="68" height="68" rx="19" fill="none" stroke="#fffaf0" stroke-opacity=".44"/>
+  <path d="M24 30v-5h5m30 0h5v5m0 28v5h-5m-30 0h-5v-5" fill="none" stroke="#fffaf0" stroke-linecap="round" stroke-width="1.6" stroke-opacity=".55"/>
+  <text x="44" y="60" fill="#fffaf0" text-anchor="middle" font-family="Georgia,serif" font-size="40" font-weight="700" letter-spacing="-3">SK</text>
+  <path d="m68 17 2.2 5.8L76 25l-5.8 2.2L68 33l-2.2-5.8L60 25l5.8-2.2z" fill="#f0d7c8"/>
+  <text x="104" y="48" fill="#29251f" font-family="Georgia,serif" font-size="31" font-weight="700" letter-spacing="-.7">Suraj Kumar</text>
+  <path d="M105 61h24" stroke="#c8512c" stroke-linecap="round" stroke-width="2"/>
+  <text x="105" y="76" fill="#756d60" font-family="Arial,sans-serif" font-size="18" font-weight="600" letter-spacing=".6">FULL STACK · AI DEVELOPER</text>
+</svg>
