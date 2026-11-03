@@ -40,11 +40,11 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="contact-section content-section">
-      <div className="section-kicker"><span>05 / CONTACT</span><span>HAVE SOMETHING GOOD IN MIND?</span></div>
+    <section id="contact" className="content-section contact-section section-frame">
+      <div className="section-heading"><span className="section-number">05 / CONTACT</span><span className="section-aside">HAVE SOMETHING GOOD IN MIND?</span></div>
       <div className="contact-grid">
         <div>
-          <h2 className="display-heading">Let’s make<br /><em>it work.</em></h2>
+          <h2 className="section-title">Let’s make<br /><em>it matter.</em></h2>
           <p className="contact-intro">Interested in thoughtful software, full-stack engineering, or AI-powered product work? I’d be glad to hear from you.</p>
           <a className="contact-email" href={`mailto:${profile.email}`}>{profile.email}<span>↗</span></a>
           <a className="contact-phone" href={`tel:${profile.phone.replaceAll(' ', '')}`}>{profile.phone}</a>
@@ -58,7 +58,7 @@ export default function Contact() {
             <input id="contact-email" name="email" type="email" placeholder="you@example.com" value={form.email} onChange={handleChange} required />
             <label htmlFor="contact-message">WHAT WOULD YOU LIKE TO BUILD?</label>
             <textarea id="contact-message" name="message" placeholder="A few lines about it..." value={form.message} onChange={handleChange} required />
-            <button className="btn" type="submit" disabled={loading}>
+            <button className="button-primary" type="submit" disabled={loading}>
               {loading ? 'Sending...' : 'Send a message'} <span>↗</span>
             </button>
             {status.msg && (
@@ -71,7 +71,7 @@ export default function Contact() {
           <aside className="contact-note">
             <span className="contact-note-index">DIRECT LINE / 01</span>
             <p>My message form is being connected. For now, email is the quickest way to reach me.</p>
-            <a className="btn" href={`mailto:${profile.email}`}>Write an email <span>↗</span></a>
+            <a className="button-primary" href={`mailto:${profile.email}`}>Write an email <span>↗</span></a>
           </aside>
         )}
       </div>
