@@ -1,58 +1,30 @@
 import { skillGroups, education, certifications } from '../data.js';
 
-const focusAreas = [
-  'MERN stack development',
-  'OpenAI & LLM integration',
-  'TypeScript and Next.js',
-  'REST APIs and MongoDB',
-  'Product-focused engineering',
-];
-
 export default function Skills() {
   return (
-    <section id="skills">
-      <div className="section-head">
-        <span>03</span>
-        <h2>Skills & Education</h2>
-      </div>
-      <div className="skill-showcase">
-        <div className="skill-showcase-banner">
-          <span className="skill-showcase-kicker">FULL STACK · AI DEVELOPMENT</span>
-          <h3 id="skill-showcase-title">Full Stack Engineer</h3>
-          <svg className="skill-showcase-wave" viewBox="0 0 1000 70" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M0 26C155 48 235 12 390 27s218 24 350 1 179-11 260 4v38H0z" />
-          </svg>
-        </div>
-        <div className="skill-showcase-focus">
-          <span className="skill-focus-label">FOCUS AREAS</span>
-          <div className="skill-focus-window" aria-hidden="true">
-            <div className="skill-focus-track">
-              {focusAreas.map((area) => <span key={area}>{area}</span>)}
+    <section id="skills" className="skills-section content-section">
+      <div className="section-kicker"><span>03 / TOOLKIT</span><span>SKILLS, SYSTEMS & STUDY</span></div>
+      <div className="section-title-row"><h2 className="display-heading">Tools for<br /><em>the whole stack.</em></h2><p>Grounded in practical web engineering, with a growing focus on mobile and AI APIs.</p></div>
+      <div className="skills-layout">
+        <div className="skill-groups">
+          {skillGroups.map((group, index) => (
+            <div key={group.title} className="skill-group">
+              <h3><span>0{index + 1}</span>{group.title}</h3>
+              <div className="chip-row">
+                {group.items.map((item) => <span key={item} className="chip">{item}</span>)}
+              </div>
             </div>
-          </div>
-          <p className="sr-only">Focus areas: {focusAreas.join(', ')}.</p>
+          ))}
         </div>
-      </div>
-      {skillGroups.map((group) => (
-        <div key={group.title} className="skill-group">
-          <h3>{group.title}</h3>
-          <div className="chip-row">
-            {group.items.map((item) => (
-              <span key={item} className="chip">{item}</span>
-            ))}
-          </div>
-        </div>
-      ))}
-      <div className="grid" style={{ marginTop: 40 }}>
-        <div className="card">
+        <aside className="education-card">
+          <span className="education-index">EDUCATION / 2022—26</span>
+          <div className="education-orbit" aria-hidden="true"><span>SK</span><i /><b /></div>
           <h3>{education.school}</h3>
           <p>{education.degree}</p>
-          <p>{education.period} · {education.detail}</p>
-        </div>
-        <div className="card">
-          <h3>Certifications</h3>
-          {certifications.map((c) => <p key={c}>{c}</p>)}
-        </div>
+          <div className="education-score"><span>{education.period}</span><strong>{education.detail}</strong></div>
+          <div className="coursework"><span>RELEVANT COURSEWORK</span><p>{education.coursework.join(' · ')}</p></div>
+          <div className="certification"><span> CERTIFICATION</span><p>{certifications.join(', ')}</p></div>
+        </aside>
       </div>
     </section>
   );

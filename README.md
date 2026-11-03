@@ -4,7 +4,9 @@ Personal portfolio built with React and Vite, with an Express API for the contac
 
 ## Local development
 
-Start the frontend from `client/` with `npm install` and `npm run dev`. Start the API from `server/` with `npm install` and `npm run dev`. Configure the API's local secrets in `server/.env`; use `server/.env.example` for the variable names and keep real credentials out of Git.
+From the repository root, install dependencies once with `npm install`, then run the frontend with `npm run dev` (Vite opens at `http://localhost:5173`). Build the frontend with `npm run build` or preview its production build with `npm run preview`.
+
+To run the API separately, configure local secrets in `server/.env` using `server/.env.example` for variable names, then run `npm run dev:server` from the repository root. Keep real credentials out of Git.
 
 ## Deployment
 

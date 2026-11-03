@@ -40,27 +40,41 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact">
-      <div className="section-head">
-        <span>05</span>
-        <h2>Contact</h2>
-      </div>
-      <p className="contact-intro">
-        Open to Full Stack AI Developer roles in Delhi NCR, Gurugram, Hyderabad, Bengaluru, Mohali, Chandigarh, and remote. Send a message and I'll reply soon.
-      </p>
-      <form className="form" onSubmit={handleSubmit}>
-        <input name="name" placeholder="Your name" value={form.name} onChange={handleChange} required />
-        <input name="email" type="email" placeholder="Your email" value={form.email} onChange={handleChange} required />
-        <textarea name="message" placeholder="Your message" value={form.message} onChange={handleChange} required />
-        <button className="btn" type="submit" disabled={loading}>
-          {loading ? 'Sending...' : 'Send Message'}
-        </button>
-        {status.msg && (
-          <p className={`status ${status.type}`}>
-            {status.msg}{status.type === 'warning' && <> <a href={`mailto:${profile.email}`}>{profile.email}</a>.</>}
-          </p>
+    <section id="contact" className="contact-section content-section">
+      <div className="section-kicker"><span>05 / CONTACT</span><span>HAVE SOMETHING GOOD IN MIND?</span></div>
+      <div className="contact-grid">
+        <div>
+          <h2 className="display-heading">Let’s make<br /><em>it work.</em></h2>
+          <p className="contact-intro">Interested in thoughtful software, full-stack engineering, or AI-powered product work? I’d be glad to hear from you.</p>
+          <a className="contact-email" href={`mailto:${profile.email}`}>{profile.email}<span>↗</span></a>
+          <a className="contact-phone" href={`tel:${profile.phone.replaceAll(' ', '')}`}>{profile.phone}</a>
+          <p className="contact-location">BASED IN {profile.location.toUpperCase()}</p>
+        </div>
+        {API_URL ? (
+          <form className="form" onSubmit={handleSubmit}>
+            <label htmlFor="contact-name">YOUR NAME</label>
+            <input id="contact-name" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
+            <label htmlFor="contact-email">EMAIL ADDRESS</label>
+            <input id="contact-email" name="email" type="email" placeholder="you@example.com" value={form.email} onChange={handleChange} required />
+            <label htmlFor="contact-message">WHAT WOULD YOU LIKE TO BUILD?</label>
+            <textarea id="contact-message" name="message" placeholder="A few lines about it..." value={form.message} onChange={handleChange} required />
+            <button className="btn" type="submit" disabled={loading}>
+              {loading ? 'Sending...' : 'Send a message'} <span>↗</span>
+            </button>
+            {status.msg && (
+              <p className={`status ${status.type}`} role="status">
+                {status.msg}{status.type === 'warning' && <> <a href={`mailto:${profile.email}`}>{profile.email}</a>.</>}
+              </p>
+            )}
+          </form>
+        ) : (
+          <aside className="contact-note">
+            <span className="contact-note-index">DIRECT LINE / 01</span>
+            <p>My message form is being connected. For now, email is the quickest way to reach me.</p>
+            <a className="btn" href={`mailto:${profile.email}`}>Write an email <span>↗</span></a>
+          </aside>
         )}
-      </form>
+      </div>
     </section>
   );
 }
