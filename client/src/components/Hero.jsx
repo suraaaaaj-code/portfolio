@@ -1,7 +1,7 @@
 import { profile, stats } from '../data.js';
 
 function SocialLinks() {
-  return <div className="hero-socials">
+  return <div className="hero-socials" data-build-block data-agent="Clients" data-code="<SocialLinks />">
     <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub profile"><span>GH</span> GitHub ↗</a>
     <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><span>in</span> LinkedIn ↗</a>
     <a href={`mailto:${profile.email}`} aria-label={`Email ${profile.name}`}><span>@</span> Email ↗</a>
@@ -25,23 +25,23 @@ function OrbitCard() {
 
 export default function Hero() {
   return <>
-    <section id="top" className="hero section-frame">
+    <section id="top" className="hero section-frame" data-build-section>
       <div className="hero-copy">
-        <p className="hero-eyebrow"><span className="availability-dot" /> OPEN TO OPPORTUNITIES <i /> {profile.location.toUpperCase()}</p>
-        <h1>Suraj<br /><em>Kumar</em><sup>✳</sup></h1>
-        <div className="hero-role"><span className="role-rule" /><h2>{profile.title}</h2></div>
-        <p className="hero-intro">I turn complex ideas into <span>useful digital products</span> — from thoughtful interfaces and robust APIs to practical AI features.</p>
+        <p className="hero-eyebrow" data-build-block data-code="<Availability />"><span className="availability-dot" /> OPEN TO OPPORTUNITIES <i /> {profile.location.toUpperCase()}</p>
+        <h1 data-build-block data-agent="Claude" data-code="<Name />">Suraj<br /><em>Kumar</em><sup>✳</sup></h1>
+        <div className="hero-role" data-build-block data-code="<Role />"><span className="role-rule" /><h2>{profile.title}</h2></div>
+        <p className="hero-intro" data-build-block data-code="<Introduction />">I turn complex ideas into <span>useful digital products</span> — from thoughtful interfaces and robust APIs to practical AI features.</p>
         <div className="hero-actions">
-          <a className="button-primary" href={profile.resume} download>Explore my resume <span>↗</span></a>
-          <a className="button-text" href="#projects">See selected work <span>↓</span></a>
+          <a className="button-primary" data-build-block data-agent="Hub" data-code="<ResumeButton />" href={profile.resume} download>Explore my resume <span>↗</span></a>
+          <a className="button-text" data-build-block data-agent="Clients" data-code="<ProjectsButton />" href="#projects">See selected work <span>↓</span></a>
         </div>
         <SocialLinks />
-        <span className="hero-index">PORTFOLIO / 2026</span>
+        <span className="hero-index" data-build-block data-code="<PortfolioIndex />">PORTFOLIO / 2026</span>
       </div>
-      <OrbitCard />
-      <div className="hero-bottom"><span>DESIGNING · BUILDING · LEARNING</span><a href="#about">SCROLL TO DISCOVER ↓</a></div>
+      <div data-build-block data-agent="Layout" data-code="<OrbitCard />"><OrbitCard /></div>
+      <div className="hero-bottom" data-build-block data-code="<ScrollPrompt />"><span>DESIGNING · BUILDING · LEARNING</span><a href="#about">SCROLL TO DISCOVER ↓</a></div>
     </section>
-    <div className="ticker" aria-label={`Core technologies: ${profile.heroChips.join(', ')}`}><div className="ticker-track" aria-hidden="true">{[0, 1].map((copy) => <div className="ticker-set" key={copy}>{profile.heroChips.map((skill) => <span key={`${copy}-${skill}`}>{skill}<i>✳</i></span>)}</div>)}</div></div>
-    <div className="quick-stats section-frame" aria-label="Career highlights">{stats.slice(0, 3).map((stat, index) => <div className="quick-stat" key={stat.label}><span>0{index + 1}</span><strong>{stat.value}</strong><small>{stat.label}</small></div>)}<a href="#experience" className="stats-more">A closer look <span>↘</span></a></div>
+    <div className="ticker" data-build-section aria-label={`Core technologies: ${profile.heroChips.join(', ')}`}><div className="ticker-track" data-build-block data-agent="Stack" data-code="<TechMarquee />" data-log="rolled out the technology stack" aria-hidden="true">{[0, 1].map((copy) => <div className="ticker-set" key={copy}>{profile.heroChips.map((skill) => <span key={`${copy}-${skill}`}>{skill}<i>✳</i></span>)}</div>)}</div></div>
+    <div className="quick-stats section-frame" data-build-section aria-label="Career highlights">{stats.slice(0, 3).map((stat, index) => <div className="quick-stat" data-build-block data-agent="Clients" data-code="<CareerHighlight />" key={stat.label}><span>0{index + 1}</span><strong>{stat.value}</strong><small>{stat.label}</small></div>)}<a href="#experience" className="stats-more" data-build-block data-code="<MoreExperienceLink />">A closer look <span>↘</span></a></div>
   </>;
 }

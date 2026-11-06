@@ -82,6 +82,22 @@ export const projects = [
     tags: ['Node.js', 'Express.js', 'PHP', 'MySQL', 'MongoDB'],
     visual: 'web',
   },
+  {
+    index: '03',
+    title: 'CI/CD Delivery Pipeline',
+    status: 'Planned',
+    desc: 'A planned hands-on project to containerize a full-stack application and automate build, checks, and deployment through a documented delivery pipeline.',
+    tags: ['Docker', 'GitHub Actions', 'CI/CD', 'Node.js'],
+    visual: 'pipeline',
+  },
+  {
+    index: '04',
+    title: 'Cloud Native Service Lab',
+    status: 'Planned',
+    desc: 'A future deployment lab for running a small API and database on cloud infrastructure, with environment configuration, health checks, and operational notes.',
+    tags: ['Cloud', 'Linux', 'Containers', 'Monitoring'],
+    visual: 'cloud',
+  },
 ];
 
 export const education = {

@@ -7,6 +7,7 @@ import Skills from './components/Skills.jsx';
 import Projects from './components/Projects.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import BuildExperience from './components/BuildExperience.jsx';
 
 function getPreferredTheme() {
   try {
@@ -46,6 +47,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <BuildExperience />
     </div>
   );
 }

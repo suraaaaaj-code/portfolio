@@ -40,25 +40,22 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="content-section contact-section section-frame">
-      <div className="section-heading"><span className="section-number">05 / CONTACT</span><span className="section-aside">HAVE SOMETHING GOOD IN MIND?</span></div>
+    <section id="contact" className="content-section contact-section section-frame" data-build-section>
+      <div className="section-heading" data-build-block data-code="<SectionLabel />"><span className="section-number">05 / CONTACT</span><span className="section-aside">HAVE SOMETHING GOOD IN MIND?</span></div>
       <div className="contact-grid">
         <div>
-          <h2 className="section-title">Let’s make<br /><em>it matter.</em></h2>
-          <p className="contact-intro">Interested in thoughtful software, full-stack engineering, or AI-powered product work? I’d be glad to hear from you.</p>
-          <a className="contact-email" href={`mailto:${profile.email}`}>{profile.email}<span>↗</span></a>
-          <a className="contact-phone" href={`tel:${profile.phone.replaceAll(' ', '')}`}>{profile.phone}</a>
-          <p className="contact-location">BASED IN {profile.location.toUpperCase()}</p>
+          <h2 className="section-title" data-build-block data-code="<ContactHeadline />">Let’s make<br /><em>it matter.</em></h2>
+          <p className="contact-intro" data-build-block data-agent="Copy" data-code="<ContactIntro />">Interested in thoughtful software, full-stack engineering, or AI-powered product work? I’d be glad to hear from you.</p>
+          <a className="contact-email" data-build-block data-agent="Connect" data-code="<EmailLink />" href={`mailto:${profile.email}`}>{profile.email}<span>↗</span></a>
+          <a className="contact-phone" data-build-block data-agent="Connect" data-code="<PhoneLink />" href={`tel:${profile.phone.replaceAll(' ', '')}`}>{profile.phone}</a>
+          <p className="contact-location" data-build-block data-code="<Location />">BASED IN {profile.location.toUpperCase()}</p>
         </div>
         {API_URL ? (
           <form className="form" onSubmit={handleSubmit}>
-            <label htmlFor="contact-name">YOUR NAME</label>
-            <input id="contact-name" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
-            <label htmlFor="contact-email">EMAIL ADDRESS</label>
-            <input id="contact-email" name="email" type="email" placeholder="you@example.com" value={form.email} onChange={handleChange} required />
-            <label htmlFor="contact-message">WHAT WOULD YOU LIKE TO BUILD?</label>
-            <textarea id="contact-message" name="message" placeholder="A few lines about it..." value={form.message} onChange={handleChange} required />
-            <button className="button-primary" type="submit" disabled={loading}>
+            <div className="form-field" data-build-block data-agent="Connect" data-code="<NameField />"><label htmlFor="contact-name">YOUR NAME</label><input id="contact-name" name="name" placeholder="Name" value={form.name} onChange={handleChange} required /></div>
+            <div className="form-field" data-build-block data-agent="Connect" data-code="<EmailField />"><label htmlFor="contact-email">EMAIL ADDRESS</label><input id="contact-email" name="email" type="email" placeholder="you@example.com" value={form.email} onChange={handleChange} required /></div>
+            <div className="form-field" data-build-block data-agent="Connect" data-code="<MessageField />"><label htmlFor="contact-message">WHAT WOULD YOU LIKE TO BUILD?</label><textarea id="contact-message" name="message" placeholder="A few lines about it..." value={form.message} onChange={handleChange} required /></div>
+            <button className="button-primary" data-build-block data-code="<SendButton />" type="submit" disabled={loading}>
               {loading ? 'Sending...' : 'Send a message'} <span>↗</span>
             </button>
             {status.msg && (
@@ -68,7 +65,7 @@ export default function Contact() {
             )}
           </form>
         ) : (
-          <aside className="contact-note">
+          <aside className="contact-note" data-build-block data-agent="Connect" data-code="<ContactNote />">
             <span className="contact-note-index">DIRECT LINE / 01</span>
             <p>My message form is being connected. For now, email is the quickest way to reach me.</p>
             <a className="button-primary" href={`mailto:${profile.email}`}>Write an email <span>↗</span></a>

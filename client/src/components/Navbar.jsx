@@ -7,7 +7,7 @@ export default function Navbar({ theme, onToggleTheme }) {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header className="site-header">
-      <a href="#top" className="brand" aria-label={`${profile.name}, home`} onClick={() => setMenuOpen(false)}>
+      <a href="#top" className="brand" data-build-block data-agent="Hub" data-code="<Brand />" aria-label={`${profile.name}, home`} onClick={() => setMenuOpen(false)}>
         <span className="brand-mark" aria-hidden="true">s<span>.</span></span>
         <span className="brand-name">Suraj Kumar<small>FULL STACK ENGINEER</small></span>
       </a>
@@ -15,13 +15,13 @@ export default function Navbar({ theme, onToggleTheme }) {
         <span>{menuOpen ? 'Close' : 'Menu'}</span><i aria-hidden="true">{menuOpen ? '×' : '☰'}</i>
       </button>
       <nav id="site-navigation" className={`site-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-        {links.map(([label, href]) => <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
+        {links.map(([label, href]) => <a href={href} data-build-block data-agent="Hub" data-code="<NavLink />" key={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
       </nav>
       <div className="header-actions">
-        <button type="button" className="theme-switch" onClick={onToggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`} title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
+        <button type="button" className="theme-switch" data-build-block data-agent="Layout" data-code="<ThemeSwitch />" onClick={onToggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`} title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
           <span aria-hidden="true">{theme === 'dark' ? '☼' : '◐'}</span><small>{theme === 'dark' ? 'LIGHT' : 'DARK'}</small>
         </button>
-        <a className="header-resume" href={profile.resume} download>Resume <span aria-hidden="true">↗</span></a>
+        <a className="header-resume" data-build-block data-agent="Hub" data-code="<ResumeLink />" href={profile.resume} download>Resume <span aria-hidden="true">↗</span></a>
       </div>
     </header>
   );
