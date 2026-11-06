@@ -30,7 +30,7 @@ export default function Hero() {
         <p className="hero-eyebrow" data-build-block data-code="<Availability />"><span className="availability-dot" /> OPEN TO OPPORTUNITIES <i /> {profile.location.toUpperCase()}</p>
         <h1 data-build-block data-agent="Claude" data-code="<Name />">Suraj<br /><em>Kumar</em><sup>✳</sup></h1>
         <div className="hero-role" data-build-block data-code="<Role />"><span className="role-rule" /><h2>{profile.title}</h2></div>
-        <p className="hero-intro" data-build-block data-code="<Introduction />">I turn complex ideas into <span>useful digital products</span> — from thoughtful interfaces and robust APIs to practical AI features.</p>
+        <p className="hero-intro" data-build-block data-code="<Introduction />">I build <span>full stack digital products</span> with React.js, Node.js, and Express.js — from reusable interfaces and REST APIs to reliable data layers and practical AI features.</p>
         <div className="hero-actions">
           <a className="button-primary" data-build-block data-agent="Hub" data-code="<ResumeButton />" href={profile.resume} download>Explore my resume <span>↗</span></a>
           <a className="button-text" data-build-block data-agent="Clients" data-code="<ProjectsButton />" href="#projects">See selected work <span>↓</span></a>

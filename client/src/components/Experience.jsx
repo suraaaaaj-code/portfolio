@@ -3,7 +3,7 @@ import { experience } from '../data.js';
 export default function Experience() {
   return <section id="experience" className="content-section experience-section section-frame" data-build-section>
     <div className="section-heading" data-build-block data-code="<SectionLabel />"><span className="section-number">02 / EXPERIENCE</span><span className="section-aside">SELECTED PROFESSIONAL WORK</span></div>
-    <div className="section-intro-row"><h2 className="section-title" data-build-block data-code="<ExperienceHeadline />">Work that<br /><em>moves things.</em></h2><p data-build-block data-code="<ExperienceIntro />">Shipping useful software with product, design, and engineering teams.</p></div>
+    <div className="section-intro-row"><h2 className="section-title" data-build-block data-code="<ExperienceHeadline />">Work that<br /><em>moves things.</em></h2><p data-build-block data-code="<ExperienceIntro />">Experience building React.js storefront components, Node.js and Express.js APIs, and production backend features for B2B commerce.</p></div>
     <div className="experience-list">{experience.map((job, index) => <article className="experience-card" key={job.role + job.company}>
       <div className="experience-meta"><span>0{index + 1}</span><span>{job.period}</span><span>{job.location}</span></div>
       <div className="experience-company" data-build-block data-agent="Work" data-code="<RoleAndCompany />"><div className={`company-mark company-mark--${job.logoClass}`}><img src={job.logo} alt={`${job.company} logo`} loading="lazy" /></div><div><h3>{job.role}</h3><p>{job.company}</p></div></div>
