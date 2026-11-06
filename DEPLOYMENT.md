@@ -38,7 +38,7 @@ The site is static and delivered from Cloudflare's CDN. A custom domain name its
    | Key | Value |
    | --- | --- |
    | `MONGODB_URI` | Your MongoDB Atlas connection string; URL-encode reserved characters in the database user's username/password. |
-   | `CLIENT_URL` | `https://suraj-kumar-portfolio.pages.dev` |
+   | `CLIENT_URL` | `https://suraaaaj-code.pages.dev` |
    | `SMTP_HOST` | `smtp.gmail.com` |
    | `SMTP_PORT` | `587` |
    | `SMTP_SECURE` | `false` |

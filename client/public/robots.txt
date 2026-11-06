@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://suraj-kumar-portfolio.pages.dev/sitemap.xml
+Sitemap: https://suraaaaj-code.pages.dev/sitemap.xml

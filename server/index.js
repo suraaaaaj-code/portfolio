@@ -6,9 +6,13 @@ import contactRoutes from './routes/contact.js';
 
 const app = express();
 
-const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
-  .split(',')
-  .map((o) => o.trim());
+const allowedOrigins = [...new Set([
+  ...(process.env.CLIENT_URL || 'http://localhost:5173')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+  'https://suraaaaj-code.pages.dev',
+])];
 
 app.use(cors({ origin: allowedOrigins }));
 app.use(express.json({ limit: '10kb' }));
